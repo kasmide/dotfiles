@@ -14,7 +14,7 @@
     nixosConfigurations.Mini = nixpkgs.lib.nixosSystem {
       # NOTE: Change this to aarch64-linux if you are on ARM
       system = "x86_64-linux";
-      modules = with inputs; [ arion.nixosModules.arion ./configuration.nix ];
+      modules = with inputs; [ arion.nixosModules.arion ./mini/configuration.nix ];
     };
   };
 }
