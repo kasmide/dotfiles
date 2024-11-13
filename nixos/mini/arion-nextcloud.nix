@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  project.name = "nextcloud";
   services."app".service = {
     image = "nextcloud";
     restart = "always";

@@ -3,6 +3,7 @@ let
   gitlab-home = /var/lib/data/gitlab;
 in
 {
+  project.name = "gitlab";
   services = {
     "gitlab".service = {
       image = "gitlab/gitlab-ce:latest";
