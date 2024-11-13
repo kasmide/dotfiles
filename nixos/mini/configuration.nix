@@ -221,7 +221,11 @@
           <Directory /var/lib/data/static>
             Options -Indexes
             Require all granted
+            ErrorDocument 403 /403.html
             ErrorDocument 404 /404.html
+            ErrorDocument 500 /500.html
+            ErrorDocument 502 /502.html
+            ErrorDocument 503 /503.html
           </Directory>
         '';
       };
