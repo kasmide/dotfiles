@@ -59,6 +59,12 @@
       global.hide_env_diff = true;
     };
   };
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      vim-sleuth
+    ];
+  };
 
   programs.zsh = {
     enable = true;
