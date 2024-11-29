@@ -59,6 +59,9 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
@@ -257,6 +260,9 @@
       # };
       "gitea".settings = {
         imports = [ ./arion-gitea.nix ];
+      };
+      "hass".settings = {
+        imports = [ ./arion-hass.nix ];
       };
     };
   };
