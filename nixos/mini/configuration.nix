@@ -205,7 +205,7 @@
             '';
           };
           "/git" = {
-            proxyPass = "http://localhost:8082/git";
+            proxyPass = "http://localhost:8082/";
             # extraConfig = ''
             #   <IfModule mod_proxy.c>
             #     ProxyPass http://localhost:8081/
@@ -251,10 +251,13 @@
     projects = {
       "nextcloud".settings = {
         imports = [ ./arion-nextcloud.nix ];
-       };
-      "gitlab".settings = {
-        imports = [ ./arion-gitlab.nix ];
-       };
+      };
+      # "gitlab".settings = {
+      #   imports = [ ./arion-gitlab.nix ];
+      # };
+      "gitea".settings = {
+        imports = [ ./arion-gitea.nix ];
+      };
     };
   };
 
