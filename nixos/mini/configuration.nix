@@ -230,7 +230,7 @@
             '';
           };
           "/git" = {
-            proxyPass = "http://localhost:8082/";
+            proxyPass = "http://localhost:8082";
             # extraConfig = ''
             #   <IfModule mod_proxy.c>
             #     ProxyPass http://localhost:8081/
