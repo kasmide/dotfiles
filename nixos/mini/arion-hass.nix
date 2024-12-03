@@ -13,5 +13,14 @@
       privileged = true;
       network_mode = "host";
     };
+    "matter".service = {
+      image = "ghcr.io/home-assistant-libs/python-matter-server:stable";
+      restart = "always";
+      volumes = [
+        "/var/lib/data/hass-matter:/data"
+        "/run/dbus:/run/dbus:ro"
+      ];
+      network_mode = "host";
+    };
   };
 }
