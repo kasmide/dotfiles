@@ -142,6 +142,28 @@
   #   enableSSHSupport = true;
   # };
 
+  systemd = {
+    services = {
+      "nextcloud-cronjob" = {
+        serviceConfig = {
+          ExecCondition = "${pkgs.docker}/bin/docker exec --user www-data nextcloud php /var/www/html/occ status -e";
+          ExecStart = "${pkgs.docker}/bin/docker exec --user www-data nextcloud php /var/www/html/cron.php";
+          KillMode = "process";
+        };
+      };
+    };
+    timers = {
+      "nextcloud-cronjob-timer" = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnBootSec = "5m";
+          OnUnitActiveSec = "5m";
+          Unit = "nextcloud-cronjob.service";
+        };
+      };
+    };
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
