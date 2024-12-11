@@ -213,47 +213,23 @@
   };
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; 
 
-  services.httpd = {
+  services.nginx = {
     enable = true;
     virtualHosts = {
       "*:80 *:443" = {
-        # serverAliases = [ "mini" ];
-        hostName = "mini";
+        serverName = "mini";
         locations = {
           "/nextcloud/" = {
-            # proxyPass = "http://localhost:8081/";
+            proxyPass = "http://localhost:8081/";
             extraConfig = ''
-              <IfModule mod_proxy.c>
-                ProxyPass http://localhost:8081/
-                # ProxyPassReverse http://[::1]:8081/nextcloud/
-                ProxyPreserveHost On
-              </IfModule>
+              proxy_set_header Host $host;
             '';
           };
-          "/git" = {
-            proxyPass = "http://localhost:8082";
-            # extraConfig = ''
-            #   <IfModule mod_proxy.c>
-            #     ProxyPass http://localhost:8081/
-            #     # ProxyPassReverse http://[::1]:8081/nextcloud/
-            #     ProxyPreserveHost On
-            #   </IfModule>
-            # '';
+          "/git/" = {
+            proxyPass = "http://localhost:8082/";
           };
         };
-        documentRoot = "/var/lib/data/static";
-        extraConfig = ''
-          Redirect /nextcloud /nextcloud/
-          <Directory /var/lib/data/static>
-            Options -Indexes
-            Require all granted
-            ErrorDocument 403 /403.html
-            ErrorDocument 404 /404.html
-            ErrorDocument 500 /500.html
-            ErrorDocument 502 /502.html
-            ErrorDocument 503 /503.html
-          </Directory>
-        '';
+        root = "/var/lib/data/static";
       };
     };
   };
