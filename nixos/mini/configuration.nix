@@ -16,6 +16,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "ip=192.168.1.2::192.168.0.1:255.255.254.0:Mini:enp1s0:none" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd = {
     availableKernelModules = [ "r8169" ];
     systemd.users.root.shell = "/bin/cryptsetup-askpass";
