@@ -216,6 +216,7 @@
 
   services.nginx = {
     enable = true;
+    clientMaxBodySize = "0";
     virtualHosts = {
       "*:80 *:443" = {
         serverName = "mini";
