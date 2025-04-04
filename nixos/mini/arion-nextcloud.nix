@@ -8,6 +8,9 @@
       restart = "always";
       ports = [ "8081:80" ];
       volumes = [ "/var/lib/data/nc:/var/www/html" ];
+      environment = {
+        PHP_MEMORY_LIMIT = "1G";
+      };
     };
     "mariadb".service = {
       image = "mariadb";
