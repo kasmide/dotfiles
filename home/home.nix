@@ -100,6 +100,7 @@
     '';
   };
   systemd.user.services.rclone-serve = {
+    enable = true;
     Unit = {
       Description = "Rclone serve service";
     };
