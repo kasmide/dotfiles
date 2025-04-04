@@ -56,6 +56,7 @@
       allowedUDPPorts = [ config.services.tailscale.port ];
       allowPing = true;
     };
+    timeServers = [ "ntp.nict.jp" ];
   };
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
