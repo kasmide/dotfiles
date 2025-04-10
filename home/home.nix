@@ -71,10 +71,14 @@
     enableCompletion = true;
     autosuggestion = {
       enable = true;
-      # strategy = [ "history" "completion" ];
+      strategy = [ "match_prev_cmd" "completion" ];
     };
     shellAliases = {
       "nix-zsh" = "nix-shell --run zsh";
+    };
+    shellGlobalAliases = {
+      ":g" = "|grep";
+      ":l" = "|less";
     };
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
@@ -84,23 +88,33 @@
       bindkey ";5C" forward-word
       bindkey ";3D" backward-word
       bindkey ";3C" forward-word
-      ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
+      # ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
       PROMPT=' %(?.%F{cyan}.%F{red}! )%d%f''${vcs_info_msg_0_}
-      %(65534#. $.%(!.%K{red}%F{white}%B !! You are using the root shell !! #%b.%K{white}%F{black} %n@%m %k%f:))%k%f'
+      %(1000#. $ .%(!.%K{red}%F{white}%B !! You are using the root shell !! # %b.%K{white}%F{black} %n@%m %k%f:))%k%f'
       RPROMPT="%(?..%F{red}%?%f)"
       SPROMPT="zsh: %F{red}%B%R%b%f not found. Run %F{green}%B%r%b%f instead? [y]es [n]o [a]bort [e]dit :"
-      autoload -Uz vcs_info
       setopt prompt_subst
+      setopt auto_remove_slash
+      setopt auto_cd
+      setopt correct
+      setopt interactive_comments
+      autoload -Uz vcs_info
       zstyle ':vcs_info:git:*' check-for-changes true
       zstyle ':vcs_info:git:*' stagedstr "%F{green}+"
       zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}*"
       zstyle ':vcs_info:*' formats "%F{blue}:%b%c%u%f "
       zstyle ':vcs_info:*' actionformats ':%a (%b)'
       precmd () { vcs_info }
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+      zstyle ':completion:*' list-dirs-first
+      zstyle ':completion:*' completer _complete _match _approximate
+      zstyle ':completion:*:approximate:*' max-errors 3 numeric
+      CORRECT_IGNORE="[_|\.]*"
+      zstyle ':completion:*' use-cache true
+      zstyle ':completion:*' menu select
     '';
   };
   systemd.user.services.rclone-serve = {
-    enable = true;
     Unit = {
       Description = "Rclone serve service";
     };
