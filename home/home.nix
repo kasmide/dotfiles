@@ -114,18 +114,6 @@
       zstyle ':completion:*' menu select
     '';
   };
-  systemd.user.services.rclone-serve = {
-    Unit = {
-      Description = "Rclone serve service";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.rclone}/bin/rclone serve webdav --addr :8084 --htpasswd /var/lib/data/tomhi/htpasswd /var/lib/data/tomhi/files/";
-      Restart = "always";
-    };
-  };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
