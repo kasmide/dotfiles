@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -47,8 +47,8 @@
 
   programs.git = {
     enable = true;
-    userEmail = "email@ksmd.dev";
-    userName = "kasmide";
+    userEmail = lib.mkDefault "email@ksmd.dev";
+    userName = lib.mkDefault "kasmide";
   };
 
   programs.direnv = {
