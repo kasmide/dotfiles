@@ -12,6 +12,7 @@
         noto-fonts-emoji
         mplus-outline-fonts.githubRelease
         hack-font
+        kdePackages.oxygen-sounds
     ];
     fonts.fontconfig = {
         enable = true;
