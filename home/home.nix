@@ -90,7 +90,7 @@
       bindkey ";3C" forward-word
       # ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion)
       PROMPT=' %(?.%F{cyan}.%F{red}! )%d%f''${vcs_info_msg_0_}
-      %(1000#. $ .%(!.%K{red}%F{white}%B !! You are using the root shell !! # %b.%K{white}%F{black} %n@%m %k%f:))%k%f'
+      %(65534#. $ .%(!.%K{red}%F{white}%B !! You are using the root shell !! # %b.%K{white}%F{black} %n@%m %k%f:))%k%f'
       RPROMPT="%(?..%F{red}%?%f)"
       SPROMPT="zsh: %F{red}%B%R%b%f not found. Run %F{green}%B%r%b%f instead? [y]es [n]o [a]bort [e]dit :"
       setopt prompt_subst
