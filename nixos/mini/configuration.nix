@@ -15,7 +15,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "ip=192.168.1.2::192.168.0.1:255.255.254.0:Mini:enp1s0:none" "ip=none" ];
+  boot.kernelParams = [ "ip=192.168.1.2::192.168.1.254:255.255.254.0:Mini:enp1s0:none" "ip=none" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd = {
     availableKernelModules = [ "r8169" ];
@@ -45,7 +45,7 @@
       wakeOnLan.enable = true;
     };
     defaultGateway = {
-      address = "192.168.0.1";
+      address = "192.168.1.254";
       interface = "enp1s0";
     };
     firewall = {
