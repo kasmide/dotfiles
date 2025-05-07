@@ -9,7 +9,7 @@
       WantedBy = [ "default.target" ];
     };
     Service = {
-      ExecStart = "${pkgs.rclone}/bin/rclone serve webdav --addr :8084 --htpasswd /var/lib/data/tomhi/htpasswd /var/lib/data/tomhi/files/";
+      ExecStart = "${pkgs.rclone}/bin/rclone serve webdav --addr :8084 --htpasswd /var/lib/data/tomhi/htpasswd --dir-cache-time 1s -L /var/lib/data/tomhi/files/";
       Restart = "always";
     };
   };
