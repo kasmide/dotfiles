@@ -83,7 +83,7 @@
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
-    initExtra = ''
+    initContent = ''
       bindkey ";5D" backward-word
       bindkey ";5C" forward-word
       bindkey ";3D" backward-word

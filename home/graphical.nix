@@ -1,9 +1,13 @@
 { config, pkgs, lib, ... }:
 
 {
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "firefox-devedition-bin"
+        "firefox-developer-edition-bin-unwrapped"
+    ];
     home.packages = with pkgs; [
         keepassxc
-        yakuake
+        kdePackages.yakuake
         firefox-devedition-bin
         vlc
         loupe
@@ -26,11 +30,16 @@
         package = pkgs.kdePackages.kdeconnect-kde;
     };
     i18n.inputMethod = {
-        enabled = "fcitx5";
+        enable = true;
+        type = "fcitx5";
         fcitx5.addons = with pkgs; [
             fcitx5-skk
             fcitx5-mozc
             fcitx5-chinese-addons
         ];
+    };
+    xdg.autostart = {
+        enable = true;
+        entries = [ "${pkgs.kdePackages.yakuake}/bin/yakuake" ];
     };
 }

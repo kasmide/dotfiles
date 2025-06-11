@@ -3,7 +3,7 @@
     # NOTE: Replace "nixos-23.11" with that which is in system.stateVersion of
     # configuration.nix. You can also use latter versions if you wish to
     # upgrade.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     arion = {
       url = "github:hercules-ci/arion";
       inputs.nixpkgs.follows = "nixpkgs";
