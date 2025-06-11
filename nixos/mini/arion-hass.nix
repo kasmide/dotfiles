@@ -3,7 +3,7 @@
   project.name = "hass";
   services = {
     "hass".service = {
-      image = "ghcr.io/home-assistant/home-assistant:stable";
+      image = "ghcr.io/home-assistant/home-assistant:rc";
       restart = "always";
       volumes = [
         "/var/lib/data/hass:/config"
