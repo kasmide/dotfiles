@@ -24,6 +24,7 @@
     pkgs.go
     pkgs.cargo
     #pkgs.git
+    pkgs.prettyping
     pkgs.python3
     pkgs.nushell
     # pkgs.fish
