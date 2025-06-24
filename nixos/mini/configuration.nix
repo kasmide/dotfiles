@@ -219,6 +219,14 @@
       };
     };
   };
+
+  systemd.oomd = {
+    enableUserSlices = true;
+    extraConfig = {
+      DefaultMemoryPressureLimit = "90%";
+    };
+  };
+
   systemd.services.syncthing.environment.STNODEFAULTFOLDER = "true"; 
 
   services.nginx = {
