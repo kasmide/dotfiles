@@ -196,17 +196,18 @@
         "Arch-Desktop" = { id = "Y4XH6XI-K3VSJVC-TLIZ6YR-TCPDEAK-TKTYYI4-XTDD6FE-T26FLFS-YHDBUAB"; };
         "Pixel-7" = { id = "RZ5TYSR-6B7IHGR-IBJFVAC-AT2RS3T-LMFNHML-36NQDGJ-MN6UMVU-BECUPQ4"; };
         "SurfaceProArch" = { id = "7RN5FFY-LQ72ZC3-F2KRQ5N-JDQDWQL-F2VRRDZ-HS4RBOE-PUSE567-XI3MEQD"; };
+        "SurfacePro-6D0C82F" = { id = "2U47ID2-GMAN5A2-SSKVEB5-QQS2OMZ-2OEKYLY-GCPE7PO-DBNHINO-HFYVJAF"; };
         "SOG01" = { id = "N4CXOJK-CGW6KFR-BQ6Z2ZE-DVDCRZ5-GXGH6A7-7NNPDD4-WS543E7-6Y5FSQD"; };
       };
       folders = {
         "KeePass" = {
           id = "pnn2n-ugpky";
-          devices = [ "Arch-Desktop" "Pixel-7" "SurfaceProArch" "SOG01" ];
+          devices = [ "Arch-Desktop" "Pixel-7" "SurfaceProArch" "SurfacePro-6D0C82F" "SOG01" ];
           path = "/home/tomhi/Syncthing/KeePass";
         };
         "Syncthing" = {
           id = "kgntc-zskvx";
-          devices = [ "Arch-Desktop" "Pixel-7" "SurfaceProArch" "SOG01" ];
+          devices = [ "Arch-Desktop" "Pixel-7" "SurfaceProArch" "SurfacePro-6D0C82F" "SOG01" ];
           path = "/home/tomhi/Syncthing/Syncthing";
           ignorePerms = false;
         };
