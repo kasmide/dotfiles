@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "tomhi";
-  home.homeDirectory = "/home/tomhi";
+  home.username = lib.mkDefault "tomhi";
+  home.homeDirectory = lib.mkDefault "/home/tomhi";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -29,7 +29,7 @@
     pkgs.nushell
     # pkgs.fish
     pkgs.neovim
-    pkgs.lm_sensors
+    # pkgs.lm_sensors
     pkgs.unar
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
