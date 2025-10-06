@@ -46,6 +46,11 @@
     # '')
   ];
 
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
   programs.git = {
     enable = true;
     userEmail = lib.mkDefault "email@ksmd.dev";
