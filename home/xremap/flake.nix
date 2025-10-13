@@ -13,7 +13,10 @@
                 withKDE = true;
                 config.modmap = [{
                     name = "Global";
-                    remap = { "Henkan" = "Shift_L"; };
+                    remap = {
+                      "Henkan" = "Shift_L";
+                      "CapsLock" = "Ctrl_L";
+                    };
                 }];
             };
         }
