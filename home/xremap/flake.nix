@@ -11,6 +11,7 @@
         xremap-flake.homeManagerModules.default {
             services.xremap = {
                 withKDE = true;
+                watch = true;
                 config.modmap = [{
                     name = "Global";
                     remap = {
