@@ -16,5 +16,10 @@
       system = "x86_64-linux";
       modules = with inputs; [ arion.nixosModules.arion ./mini/configuration.nix ];
     };
+    nixosConfigurations.raspi400_tomhi = nixpkgs.lib.nixosSystem {
+      # NOTE: Change this to aarch64-linux if you are on ARM
+      system = "aarch64-linux";
+      modules = with inputs; [ ./omu-raspi400/configuration.nix ];
+    };
   };
 }
