@@ -54,8 +54,10 @@
 
   programs.git = {
     enable = true;
-    userEmail = lib.mkDefault "email@ksmd.dev";
-    userName = lib.mkDefault "kasmide";
+    settings = {
+      user.name = lib.mkDefault "kasmide";
+      user.email = lib.mkDefault "email@ksmd.dev";
+    };
   };
 
   programs.direnv = {
