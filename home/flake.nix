@@ -7,11 +7,11 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    vscode-config.url = "path:./modules/vscode";
     xremap-config.url = "path:./modules/xremap";
   };
 
-  outputs = { nixpkgs, home-manager, nix-vscode-extensions, xremap-config, ... }:
+  outputs = { nixpkgs, home-manager, vscode-config, xremap-config, ... }:
     let
       systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
@@ -36,14 +36,11 @@
 
           # omni: x86_64 Linux with xremap and vscode
           "tomhi@ArchOmni" = home-manager.lib.homeManagerConfiguration {
-            pkgs = import nixpkgs {
-              system = "x86_64-linux";
-              overlays = [ nix-vscode-extensions.overlays.default ];
-            };
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
             modules = [
               ./modules/common.nix
-              ./modules/vscode.nix
               ./hosts/omni.nix
+              vscode-config.homeManagerModules.default
               xremap-config.homeManagerModules.default
             ];
           };
