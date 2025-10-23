@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  # mini host specific configuration
   systemd.user.services.rclone-serve = {
     Unit = {
       Description = "Rclone serve service";

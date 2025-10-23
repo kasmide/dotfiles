@@ -10,6 +10,7 @@
       imports = [
         xremap-flake.homeManagerModules.default {
             services.xremap = {
+                enable = true;
                 withKDE = true;
                 watch = true;
                 config.modmap = [{

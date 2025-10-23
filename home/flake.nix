@@ -2,29 +2,60 @@
   description = "Home Manager configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    xremap-config.url = "path:./modules/xremap";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, nix-vscode-extensions, xremap-config, ... }:
     let
       systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in {
       packages = forAllSystems (system: {
-        homeConfigurations.tomhi = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${system};
+        homeConfigurations = {
+          # Generic multi-architecture configuration
+          tomhi = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.${system};
+            modules = [ ./modules/common.nix ];
+          };
 
-          # Specify your home configuration modules here, for example,
-          # the path to your home.nix.
-          modules = [ ./home.nix ];
+          # mini: x86_64 Linux with graphical environment
+          "tomhi@Mini" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux;
+            modules = [
+              ./modules/common.nix
+              ./modules/graphical.nix
+              ./hosts/mini.nix
+            ];
+          };
 
-          # Optionally use extraSpecialArgs
-          # to pass through arguments to home.nix
+          # omni: x86_64 Linux with xremap and vscode
+          "tomhi@ArchOmni" = home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs {
+              system = "x86_64-linux";
+              overlays = [ nix-vscode-extensions.overlays.default ];
+            };
+            modules = [
+              ./modules/common.nix
+              ./modules/vscode.nix
+              ./hosts/omni.nix
+              xremap-config.homeManagerModules.default
+            ];
+          };
+
+          # omumbp: macOS (Darwin)
+          "tomhi@OMUMBP" = home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+            modules = [
+              ./modules/common.nix
+              ./hosts/omumbp.nix
+            ];
+          };
         };
       });
     };
