@@ -39,6 +39,7 @@
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             modules = [
               ./modules/common.nix
+              ./modules/graphical.nix
               ./hosts/omni.nix
               vscode-config.homeManagerModules.default
               xremap-config.homeManagerModules.default

@@ -1,14 +1,15 @@
 { config, pkgs, lib, ... }:
 
 {
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "firefox-devedition-bin"
-        "firefox-developer-edition-bin-unwrapped"
-    ];
     home.packages = with pkgs; [
         keepassxc
+        kdePackages.dolphin
+        kdePackages.dolphin-plugins
+        kdePackages.kate
+        kdePackages.konsole
         kdePackages.yakuake
-        firefox-devedition-bin
+        kdePackages.oxygen-sounds
+        firefox-devedition
         vlc
         loupe
         noto-fonts
@@ -16,10 +17,21 @@
         noto-fonts-emoji
         mplus-outline-fonts.githubRelease
         hack-font
-        kdePackages.oxygen-sounds
     ];
+    home.pointerCursor = {
+        gtk.enable = true;
+        x11.enable = true;
+        package = pkgs.kdePackages.breeze;
+        name = "Breeze Light";
+    };
+    qt = {
+        enable = true;
+        style.name = "Breeze";
+    };
     fonts.fontconfig = {
         enable = true;
+        antialiasing = false;
+        hinting = "slight";
         defaultFonts = {
             monospace = [ "Hack" ];
             sansSerif = [ "Noto Sans" "M PLUS 1" "Noto Sans CJK JP" ];
@@ -36,6 +48,10 @@
             fcitx5-skk
             fcitx5-mozc
             fcitx5-chinese-addons
+            fcitx5-configtool
+            fcitx5-gtk
+            kdePackages.fcitx5-qt
+            libsForQt5.fcitx5-qt
         ];
     };
     xdg.autostart = {
