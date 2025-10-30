@@ -64,6 +64,7 @@
   programs.git = {
     enable = true;
     settings = {
+      commit.gpgSign = lib.mkDefault true;
       user.name = lib.mkDefault "kasmide";
       user.email = lib.mkDefault "email@ksmd.dev";
     };

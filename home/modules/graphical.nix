@@ -8,6 +8,7 @@
         kdePackages.ffmpegthumbs
         kdePackages.gwenview
         kdePackages.kate
+        kdePackages.kleopatra
         kdePackages.konsole
         kdePackages.plasma-browser-integration
         kdePackages.spectacle
