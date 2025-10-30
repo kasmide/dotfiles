@@ -1,6 +1,14 @@
 { config, pkgs, lib, ... }:
 
 {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "spotify"
+    "vscode-extension-anthropic-claude-code"
+    "vscode-extension-github-copilot"
+    "vscode-extension-github-copilot-chat"
+    "vscode-extension-ms-python-vscode-pylance"
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = lib.mkDefault "tomhi";

@@ -9,13 +9,6 @@
     homeManagerModules.default = { pkgs, lib, ... }: {
       nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
 
-      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "vscode-extension-anthropic-claude-code"
-        "vscode-extension-github-copilot"
-        "vscode-extension-github-copilot-chat"
-        "vscode-extension-ms-python-vscode-pylance"
-      ];
-
       programs.vscode = {
         enable = true;
         package = pkgs.vscodium;

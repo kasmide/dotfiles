@@ -14,6 +14,7 @@
         kdePackages.yakuake
         kdePackages.oxygen-sounds
         vlc
+        spotify
         libreoffice-fresh
         loupe
         wl-clipboard
