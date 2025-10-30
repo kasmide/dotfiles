@@ -5,16 +5,21 @@
         keepassxc
         kdePackages.dolphin
         kdePackages.dolphin-plugins
+        kdePackages.ffmpegthumbs
+        kdePackages.gwenview
         kdePackages.kate
         kdePackages.konsole
+        kdePackages.plasma-browser-integration
+        kdePackages.spectacle
         kdePackages.yakuake
         kdePackages.oxygen-sounds
-        firefox-devedition
         vlc
+        libreoffice-fresh
         loupe
+        wl-clipboard
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         mplus-outline-fonts.githubRelease
         hack-font
     ];
@@ -30,7 +35,7 @@
     };
     fonts.fontconfig = {
         enable = true;
-        antialiasing = false;
+        antialiasing = true;
         hinting = "slight";
         defaultFonts = {
             monospace = [ "Hack" ];
@@ -41,17 +46,21 @@
         enable = true;
         package = pkgs.kdePackages.kdeconnect-kde;
     };
+    programs.firefox = {
+        enable = true;
+        package = pkgs.firefox-devedition;
+        languagePacks = [ "ja" ];
+    };
     i18n.inputMethod = {
         enable = true;
         type = "fcitx5";
         fcitx5.addons = with pkgs; [
             fcitx5-skk
             fcitx5-mozc
-            fcitx5-chinese-addons
-            fcitx5-configtool
+            qt6Packages.fcitx5-chinese-addons
+            qt6Packages.fcitx5-configtool
             fcitx5-gtk
             kdePackages.fcitx5-qt
-            libsForQt5.fcitx5-qt
         ];
     };
     xdg.autostart = {
