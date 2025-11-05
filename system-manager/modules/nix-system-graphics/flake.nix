@@ -23,6 +23,7 @@
                 extraPackages = with pkgs; [
                   vpl-gpu-rt
                   intel-media-driver
+                  intel-compute-runtime
                   libvdpau-va-gl
                 ];
               };
