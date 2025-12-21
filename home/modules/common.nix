@@ -31,13 +31,16 @@
     # pkgs.hello
     pkgs.asciidoctor-with-extensions
     pkgs.bat
+    pkgs.bind.dnsutils
     pkgs.go
     pkgs.cargo
     pkgs.colordiff
     #pkgs.git
+    pkgs.jq
     pkgs.prettyping
     pkgs.python3
     pkgs.nushell
+    pkgs.nodejs
     # pkgs.fish
     pkgs.neovim
     # pkgs.lm_sensors
