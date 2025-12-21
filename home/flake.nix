@@ -16,7 +16,7 @@
       systems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in {
-      packages = forAllSystems (system: {
+      legacyPackages = forAllSystems (system: {
         homeConfigurations = {
           # Generic multi-architecture configuration
           tomhi = home-manager.lib.homeManagerConfiguration {
@@ -39,7 +39,9 @@
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             modules = [
               ./modules/common.nix
-              ./modules/graphical.nix
+              # ./modules/graphical.nix
+              # ./modules/graphical_apps.nix
+              ./modules/fonts.nix
               ./hosts/omni.nix
               vscode-config.homeManagerModules.default
               xremap-config.homeManagerModules.default

@@ -3,21 +3,26 @@
 {
     home.packages = with pkgs; [
         keepassxc
+        kdePackages.ark
         kdePackages.dolphin
         kdePackages.dolphin-plugins
         kdePackages.ffmpegthumbs
         kdePackages.gwenview
         kdePackages.kate
+        kdePackages.kded
         kdePackages.kleopatra
         kdePackages.konsole
+        kdePackages.okular
         kdePackages.plasma-browser-integration
         kdePackages.spectacle
         kdePackages.yakuake
         kdePackages.oxygen-sounds
+        mission-center
         vlc
         spotify
         libreoffice-fresh
         loupe
+        lxqt.lximage-qt
         wl-clipboard
         noto-fonts
         noto-fonts-cjk-sans
@@ -33,7 +38,7 @@
     };
     qt = {
         enable = true;
-        style.name = "Breeze";
+        platformTheme.name = "kde";
     };
     fonts.fontconfig = {
         enable = true;
@@ -52,6 +57,9 @@
         enable = true;
         package = pkgs.firefox-devedition;
         languagePacks = [ "ja" ];
+        nativeMessagingHosts = [
+            pkgs.kdePackages.plasma-browser-integration
+        ];
     };
     i18n.inputMethod = {
         enable = true;
@@ -62,11 +70,13 @@
             qt6Packages.fcitx5-chinese-addons
             qt6Packages.fcitx5-configtool
             fcitx5-gtk
-            kdePackages.fcitx5-qt
         ];
     };
     xdg.autostart = {
         enable = true;
         entries = [ "${pkgs.kdePackages.yakuake}/bin/yakuake" ];
+    };
+    home.sessionVariables = {
+        QT_ENABLE_HIGHDPI_SCALING = "1";
     };
 }

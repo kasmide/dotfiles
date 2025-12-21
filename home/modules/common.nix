@@ -33,6 +33,7 @@
     pkgs.bat
     pkgs.go
     pkgs.cargo
+    pkgs.colordiff
     #pkgs.git
     pkgs.prettyping
     pkgs.python3
