@@ -161,6 +161,15 @@
           KillMode = "process";
         };
       };
+      "nextcloud-previewgenerator" = {
+        serviceConfig = {
+          ExecCondition = "${pkgs.docker}/bin/docker exec --user www-data nextcloud php /var/www/html/occ status -e";
+          ExecStart = "${pkgs.docker}/bin/docker exec --user www-data nextcloud php /var/www/html/occ preview:pre-generate";
+          KillMode = "process";
+          Nice = 19;
+          IOSchedulingClass = "idle";
+        };
+      };
     };
     timers = {
       "nextcloud-cronjob-timer" = {
@@ -169,6 +178,14 @@
           OnBootSec = "5m";
           OnUnitActiveSec = "5m";
           Unit = "nextcloud-cronjob.service";
+        };
+      };
+      "nextcloud-previewgenerator-timer" = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnBootSec = "15m";
+          OnUnitActiveSec = "12h";
+          Unit = "nextcloud-previewgenerator.service";
         };
       };
     };
