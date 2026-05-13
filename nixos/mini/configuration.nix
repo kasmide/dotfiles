@@ -42,6 +42,7 @@
       	address = "192.168.1.2";
       	prefixLength = 23;
       }];
+      useDHCP = true;
       wakeOnLan.enable = true;
     };
     defaultGateway = {
