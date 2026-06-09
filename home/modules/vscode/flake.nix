@@ -9,9 +9,8 @@
     homeManagerModules.default = { pkgs, lib, ... }: {
       nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
 
-      programs.vscode = {
+      programs.vscodium = {
         enable = true;
-        package = pkgs.vscodium;
 
         profiles.default = {
           enableUpdateCheck = false;
