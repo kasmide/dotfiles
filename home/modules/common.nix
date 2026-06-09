@@ -7,6 +7,7 @@
     "vscode-extension-github-copilot"
     "vscode-extension-github-copilot-chat"
     "vscode-extension-ms-python-vscode-pylance"
+    "claude-code"
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
