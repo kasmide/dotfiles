@@ -3,7 +3,7 @@
   project.name = "gitea";
   services = {
     "gitea".service = {
-      image = "codeberg.org/forgejo/forgejo:11";
+      image = "codeberg.org/forgejo/forgejo:15";
       restart = "always";
       ports = [ "8082:3000" "2222:22" ];
       environment = {
