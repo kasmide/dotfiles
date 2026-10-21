@@ -261,6 +261,7 @@
             proxyPass = "http://localhost:8081/";
             extraConfig = ''
               proxy_set_header Host $host;
+              if ($content_type ~* "^multipart/form-data") { return 403; }
             '';
           };
           "/git/" = {

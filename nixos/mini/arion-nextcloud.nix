@@ -7,7 +7,12 @@
       container_name = "nextcloud";
       restart = "always";
       ports = [ "8081:80" ];
-      volumes = [ "/var/lib/data/nc:/var/www/html" ];
+      volumes = [
+        "/var/lib/data/nc:/var/www/html"
+        "${pkgs.writeText "php2shell.ini" ''
+           session.upload_progress.enabled = Off
+        ''}:/usr/local/etc/php/conf.d/php2shell.ini:ro"
+      ];
       environment = {
         PHP_MEMORY_LIMIT = "1G";
       };
