@@ -10,7 +10,8 @@
       volumes = [
         "/var/lib/data/nc:/var/www/html"
         "${pkgs.writeText "php2shell.ini" ''
-           session.upload_progress.enabled = Off
+          session.use_only_cookies = On
+          session.upload_progress.enabled = Off
         ''}:/usr/local/etc/php/conf.d/php2shell.ini:ro"
       ];
       environment = {
