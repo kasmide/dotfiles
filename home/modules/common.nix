@@ -99,6 +99,7 @@
     };
     shellAliases = {
       "nix-zsh" = "nix-shell --run zsh";
+      cdt = ''cd "$(mktemp -d)"'';
     };
     shellGlobalAliases = {
       ":g" = "|grep";
