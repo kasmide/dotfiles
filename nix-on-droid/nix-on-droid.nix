@@ -10,6 +10,7 @@
   # Set your time zone
   time.timeZone = "Asia/Tokyo";
 
+  user.userName = "tomhi";
   user.shell = "${pkgs.zsh}/bin/zsh";
 
   environment.packages = [ pkgs.openssh ];
@@ -20,7 +21,6 @@
         ../home/modules/common.nix
         ../home/modules/extras.nix
       ];
-      home.username = lib.mkForce config.user.userName;
       home.homeDirectory = lib.mkForce config.user.home;
     };
   };
