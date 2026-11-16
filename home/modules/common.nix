@@ -68,6 +68,17 @@
       user.name = lib.mkDefault "kasmide";
       user.email = lib.mkDefault "email@ksmd.dev";
     };
+    signing = {
+      format = "openpgp";
+      key = "19A22C2B7789621E!";
+    };
+  };
+
+  programs.gpg.enable = true;
+
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = lib.mkDefault pkgs.pinentry-curses;
   };
 
   programs.direnv = {
