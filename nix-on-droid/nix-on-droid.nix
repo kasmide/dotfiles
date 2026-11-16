@@ -12,9 +12,14 @@
 
   user.shell = "${pkgs.zsh}/bin/zsh";
 
+  environment.packages = [ pkgs.openssh ];
+
   home-manager = {
     config = {
-      imports = [ ../home/modules/common.nix ];
+      imports = [
+        ../home/modules/common.nix
+        ../home/modules/extras.nix
+      ];
       home.username = lib.mkForce config.user.userName;
       home.homeDirectory = lib.mkForce config.user.home;
     };

@@ -30,19 +30,14 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    pkgs.asciidoctor-with-extensions
     pkgs.bat
     pkgs.bind.dnsutils
-    pkgs.go
-    pkgs.cargo
     pkgs.colordiff
-    #pkgs.git
     pkgs.jq
     pkgs.prettyping
     pkgs.python3
     pkgs.nushell
     pkgs.nodejs
-    # pkgs.fish
     pkgs.neovim
     # pkgs.lm_sensors
     pkgs.unar
@@ -105,10 +100,17 @@
       ":g" = "|grep";
       ":l" = "|less";
     };
+    history = {
+      extended = true;
+      ignoreAllDups = true;
+    };
     historySubstringSearch.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
     initContent = ''
+      autoload -Uz url-quote-magic
+      zle -N self-insert url-quote-magic
+      REPORTTIME=5
       bindkey ";5D" backward-word
       bindkey ";5C" forward-word
       bindkey ";3D" backward-word

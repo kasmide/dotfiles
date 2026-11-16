@@ -29,6 +29,7 @@
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             modules = [
               ./modules/common.nix
+              ./modules/extras.nix
               ./modules/graphical.nix
               ./hosts/mini.nix
             ];
@@ -39,6 +40,7 @@
             pkgs = nixpkgs.legacyPackages.x86_64-linux;
             modules = [
               ./modules/common.nix
+              ./modules/extras.nix
               # ./modules/graphical.nix
               # ./modules/graphical_apps.nix
               ./modules/fonts.nix
@@ -53,6 +55,7 @@
             pkgs = nixpkgs.legacyPackages.x86_64-darwin;
             modules = [
               ./modules/common.nix
+              ./modules/extras.nix
               ./hosts/omumbp.nix
             ];
           };
